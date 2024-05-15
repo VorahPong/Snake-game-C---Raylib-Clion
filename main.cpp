@@ -12,13 +12,23 @@
 Color green = { 100, 200, 100, 200 };
 
 //Creating cells related to the resolution
+//30x25 = 750
 int cellSize = 30;
 int cellCount = 25;
 
 //Score
 int score = 0;
 
+//Game status
 bool paused = false;
+bool startGame = false;
+
+//button
+bool startBtn = false;
+bool exitBtn = false;
+
+//mouse position
+Vector2 mousePoint = {0.0f, 0.0f};
 
 //Move per time for snake
 double lastUpdateTime = 0;
@@ -150,18 +160,33 @@ int main() {
 
     //Game loop
     while (WindowShouldClose() == false) {  // Condition is if user press escape or click the x button then the while loop will break
+        mousePoint = GetMousePosition();
         BeginDrawing();
 
-        //draw the black outline around the screen
-        for(int index = 0; index < cellCount; index++) {
-            DrawRectangle(0*cellSize, index*cellSize, cellSize, cellSize, BLACK); // left
-            DrawRectangle((cellCount-1)*cellSize, index*cellSize, cellSize, cellSize, BLACK); // right
-            DrawRectangle(index*cellSize, 0*cellSize, cellSize, cellSize, BLACK); // top
-            DrawRectangle(index*cellSize, (cellCount-1)*cellSize, cellSize, cellSize, BLACK); // down
-        }
-        //
+        if(startGame == false) {
 
-        if(paused) { // if game is paused
+            ClearBackground(MAROON);
+            DrawRectangle(250, 400, 240, 90, BLACK);
+            Rectangle startButton = { 250, 400, 240, 90};
+            DrawText("Play", 280, 400, 80, WHITE);
+
+            DrawRectangle(250, 600, 240, 90, BLACK);
+            Rectangle exitButton = { 250, 600, 240, 90};
+            DrawText("Exit", 280, 600, 80, WHITE);
+
+            if(CheckCollisionPointRec(mousePoint, startButton)) {
+                if(IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+                    startGame = true;
+                }
+            }
+            if(CheckCollisionPointRec(mousePoint, exitButton)) {
+                if(IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                    break;
+            }
+
+
+        }
+        else if(paused == true) { // if game is paused
             DrawText("YOU LOST!", cellSize+100, cellSize+100, 90, RED);
             DrawText("Press 'Y' to try again", cellSize+300, cellSize+300, 30, RED);
             if(IsKeyPressed(KEY_Y)) {
@@ -174,9 +199,17 @@ int main() {
                 game.snake.direction = { 1,0 };
             }
         }
-        else {
-            //Start drawing
-            DrawText(TextFormat("Score: %08i", score), 0, 0, 30, GREEN);
+        else if(startGame == true){
+
+            //draw the black outline around the screen
+            for(int index = 0; index < cellCount; index++) {
+                DrawRectangle(0*cellSize, index*cellSize, cellSize, cellSize, BLACK); // left
+                DrawRectangle((cellCount-1)*cellSize, index*cellSize, cellSize, cellSize, BLACK); // right
+                DrawRectangle(index*cellSize, 0*cellSize, cellSize, cellSize, BLACK); // top
+                DrawRectangle(index*cellSize, (cellCount-1)*cellSize, cellSize, cellSize, BLACK); // down
+            }
+
+            DrawText(TextFormat("Score: %03i", score), 0, 0, 30, GREEN);
 
             ClearBackground(DARKBROWN); //set background color to green
 
