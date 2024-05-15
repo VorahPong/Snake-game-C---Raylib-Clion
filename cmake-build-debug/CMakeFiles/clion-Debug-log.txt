@@ -1,34 +1,12 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/vorahpongmean/CLionProjects/snakecpp -B /Users/vorahpongmean/CLionProjects/snakecpp/cmake-build-debug
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S "/Users/vorahpongmean/Downloads/Github Repo/Snake-game-C---Raylib-Clion" -B "/Users/vorahpongmean/Downloads/Github Repo/Snake-game-C---Raylib-Clion/cmake-build-debug"
 -- Populating raylib
--- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /Users/vorahpongmean/CLionProjects/snakecpp/cmake-build-debug/_deps/raylib-subbuild
-ninja: no work to do.
-CMake Deprecation Warning at cmake-build-debug/_deps/raylib-src/CMakeLists.txt:1 (cmake_minimum_required):
-  Compatibility with CMake < 3.5 will be removed from a future version of
-  CMake.
-
-  Update the VERSION argument <min> value or use a ...<max> suffix to tell
-  CMake that the project does not need compatibility with older versions.
-
-
--- Testing if -Werror=pointer-arith can be used -- compiles
--- Testing if -Werror=implicit-function-declaration can be used -- compiles
--- Testing if -fno-strict-aliasing can be used -- compiles
--- Using raylib's GLFW
--- Including Cocoa support
-CMake Warning (dev) at cmake-build-debug/_deps/raylib-src/cmake/LibraryConfigurations.cmake:22 (MESSAGE):
-  OpenGL is deprecated starting with macOS 10.14 (Mojave)!
+CMake Error: The current CMakeCache.txt directory /Users/vorahpongmean/Downloads/Github Repo/Snake-game-C---Raylib-Clion/cmake-build-debug/_deps/raylib-subbuild/CMakeCache.txt is different than the directory /Users/vorahpongmean/CLionProjects/snakecpp/cmake-build-debug/_deps/raylib-subbuild where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error at /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.28/Modules/FetchContent.cmake:1667 (message):
+  CMake step for raylib failed: 1
 Call Stack (most recent call first):
-  cmake-build-debug/_deps/raylib-src/src/CMakeLists.txt:48 (include)
-This warning is for project developers.  Use -Wno-dev to suppress it.
+  /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.28/Modules/FetchContent.cmake:1819:EVAL:2 (__FetchContent_directPopulate)
+  /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.28/Modules/FetchContent.cmake:1819 (cmake_language)
+  CMakeLists.txt:19 (FetchContent_Populate)
 
--- Audio Backend: miniaudio
--- Building raylib static library
--- Generated build type: Debug
--- Compiling with the flags:
---   PLATFORM=PLATFORM_DESKTOP
---   GRAPHICS=GRAPHICS_API_OPENGL_33
--- Configuring done (0.1s)
--- Generating done (0.0s)
--- Build files have been written to: /Users/vorahpongmean/CLionProjects/snakecpp/cmake-build-debug
+
+-- Configuring incomplete, errors occurred!
